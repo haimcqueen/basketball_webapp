@@ -2,4 +2,5 @@
 
 EDA on scraped data of NBA players
 
-Check it out on:
+Check it out here:
+https://basketball-streamlit-webapp.herokuapp.com/
