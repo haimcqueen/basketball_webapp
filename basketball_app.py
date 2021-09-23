@@ -14,7 +14,7 @@ This app performs simple webscraping of NBA player stats data!
 """)
 
 st.sidebar.header('User Input Features')
-selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2020))))
+selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2022))))
 
 # Web scraping of NBA player stats
 @st.cache
@@ -27,7 +27,7 @@ def load_data(year):
     playerstats = raw.drop(['Rk'], axis=1)
     return playerstats
 playerstats = load_data(selected_year)
-
+playerstats
 # Sidebar - Team selection
 sorted_unique_team = sorted(playerstats.Tm.unique())
 selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
@@ -41,7 +41,8 @@ df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playersta
 
 st.header('Display Player Stats of Selected Team(s)')
 st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')
-st.dataframe(df_selected_team)
+
+#st.dataframe(df_selected_team)
 
 # Download NBA player stats data
 # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
